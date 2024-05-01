@@ -5,6 +5,6 @@ export const AuthProvider = ({ children }) => {
   const contextData = {};
 
   return (
-    <AuthContext.provider value={contextData}>{children}</AuthContext.provider>
+    <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
   );
 };
