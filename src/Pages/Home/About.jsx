@@ -4,7 +4,7 @@ import parts from "../../assets/images/about_us/parts.jpg";
 export const About = () => {
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen ">
         <div className="hero-content px-0 grid grid-cols-1 md:grid-cols-2">
           <div className="relative">
             {" "}
