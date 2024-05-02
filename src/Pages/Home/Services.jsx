@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { ServicesCard } from "./ServicesCard";
 
 export const Services = () => {
   const { isPending, isError, data, error } = useQuery({
@@ -19,6 +20,10 @@ export const Services = () => {
           the majority have suffered alteration in some form, by injected
           humour, or randomised words which don't look even slightly believable.{" "}
         </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {!isPending &&
+          data.map((el) => <ServicesCard key={el._id} data={el} />)}
       </div>
     </div>
   );
