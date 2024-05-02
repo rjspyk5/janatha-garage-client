@@ -1,8 +1,14 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import loginimg from "../assets/images/login/login.svg";
 
 export const SignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -14,12 +20,13 @@ export const SignUp = () => {
             <h1 className="text-center mt-10 font-bold text-4xl">
               Registration
             </h1>
-            <form className="card-body">
+            <form onSubmit={handleSignUp} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
+                  name="name"
                   type="text"
                   placeholder="Your name"
                   className="input input-bordered"
@@ -31,6 +38,7 @@ export const SignUp = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  name="email"
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
@@ -42,6 +50,7 @@ export const SignUp = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  name="password"
                   type="password"
                   placeholder="password"
                   className="input input-bordered"

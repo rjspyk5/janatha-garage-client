@@ -1,10 +1,15 @@
-import React from "react";
 import loginimg from "../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -14,12 +19,13 @@ export const Login = () => {
           </div>
           <div className="card shrink-0 w-full h-full shadow-2xl bg-base-100">
             <h1 className="text-center mt-10 font-bold text-4xl">Login</h1>
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  name="email"
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
@@ -31,6 +37,7 @@ export const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  name="password"
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
