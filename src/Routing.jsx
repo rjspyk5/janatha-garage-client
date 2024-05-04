@@ -6,6 +6,7 @@ import { SignUp } from "./Pages/SignUp";
 import { PrivateRoute } from "./Pages/PrivateRoute";
 import { Blog } from "./Pages/Blog";
 import { Cheakout } from "./Pages/Cheakout";
+import { MyBookings } from "./Pages/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
         element: <Cheakout />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/mybookings",
+        element: <MyBookings />,
       },
     ],
   },

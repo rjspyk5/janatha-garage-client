@@ -24,7 +24,7 @@ export const Cheakout = () => {
       price,
     };
     axios
-      .post("http://localhost:5000/book", order)
+      .post("http://localhost:5000/bookings", order)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
