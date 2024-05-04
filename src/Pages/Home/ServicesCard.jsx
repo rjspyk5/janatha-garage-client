@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export const ServicesCard = ({ data }) => {
   return (
     <div>
@@ -10,7 +11,9 @@ export const ServicesCard = ({ data }) => {
           <p>Price : ${data.price}</p>
 
           <div className="card-actions ">
-            <button className="btn btn-primary">Buy Now</button>
+            <Link to={`/checkout/:${data._id}`} className="btn btn-primary">
+              Book Now
+            </Link>
           </div>
         </div>
       </div>
