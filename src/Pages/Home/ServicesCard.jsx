@@ -11,7 +11,7 @@ export const ServicesCard = ({ data }) => {
           <p>Price : ${data.price}</p>
 
           <div className="card-actions ">
-            <Link to={`/checkout/:${data._id}`} className="btn btn-primary">
+            <Link to={`/checkout/${data._id}`} className="btn btn-primary">
               Book Now
             </Link>
           </div>
