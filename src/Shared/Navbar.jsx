@@ -1,6 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../assets/Provider/AuthProvider";
 
 export const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => console.log("logout success"))
+      .then((err) => console.log(err));
+  };
   const menu = (
     <>
       <li>
@@ -88,8 +96,39 @@ export const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menu}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-3">
           <a className="btn btn-sm btn-outline btn-success">Appoinment</a>
+          {user ? (
+            <div className="dropdown dropdown-hover ">
+              <div tabIndex={0} role="button" className=" m-1 avatar">
+                {" "}
+                <div className="w-10 rounded-full">
+                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu absolute right-2 w-24 p-2 shadow bg-base-100 rounded-box"
+              >
+                <li>
+                  <p>{user?.displayName}</p>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogOut}
+                    className="btn bg-red-500 text-white"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login" className="btn btn-primary">
+              {" "}
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
