@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../assets/Provider/AuthProvider";
+import axios from "axios";
 
 export const Cheakout = () => {
   const data = useLoaderData();
+
   const { user } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,12 +15,18 @@ export const Cheakout = () => {
     const date = form.date.value;
     const price = form.price.value;
     const order = {
-      name,
-      email,
+      customerName: name,
+      email: email,
       date,
+      service_id: data._id,
+      service_title: data.title,
+      image: data.img,
       price,
     };
-    console.log(order);
+    axios
+      .post("http://localhost:5000/book", order)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
