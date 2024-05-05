@@ -1,19 +1,27 @@
 import loginimg from "../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../assets/Provider/AuthProvider";
-
+import axios from "axios";
 export const Login = () => {
   const { logIn } = useContext(AuthContext);
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     logIn(email, password)
-      .then((res) => console.log(res))
+      .then((res) => {
+        axios
+          .post(`http://localhost:5000/jwt`, { email })
+          .then((res) => console.log(res.data))
+          .catch((err) => console.log(err));
+        // navigate(state ? state : "/");
+      })
       .catch((err) => console.log(err));
   };
   return (
