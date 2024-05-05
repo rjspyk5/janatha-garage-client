@@ -51,6 +51,18 @@ export const Navbar = () => {
           Blog
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink
+            to="/mybookings"
+            className={({ isActive }) =>
+              isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+            }
+          >
+            Mybookings
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to="/contact"
