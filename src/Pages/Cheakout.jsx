@@ -20,9 +20,10 @@ export const Cheakout = () => {
       date,
       service_id: data._id,
       service_title: data.title,
-      image: data.img,
+      img: data.img,
       price,
     };
+
     axios
       .post("http://localhost:5000/bookings", order)
       .then((res) => console.log(res.data))
