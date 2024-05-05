@@ -27,7 +27,15 @@ export const MyBookings = () => {
   const handleConfrim = (id) => {
     axios
       .patch(`http://localhost:5000/book/${id}`, { status: "confrimed" })
-      .then((res) => console.log(res))
+      .then(() => {
+        alert("status updated");
+        const statusUpdatedId = data.find((el) => el._id == id);
+        statusUpdatedId.status = "confrimed";
+        const allProductWithoutUpdatedStatus = data.filter(
+          (el) => el._id !== id
+        );
+        setdata([statusUpdatedId, ...allProductWithoutUpdatedStatus]);
+      })
       .catch((err) => console.log(err));
   };
   return (
@@ -81,12 +89,18 @@ export const MyBookings = () => {
                   <td>{el.price}</td>
                   <td>{el.date}</td>
                   <th>
-                    <button
-                      onClick={() => handleConfrim(el._id)}
-                      className="btn btn-ghost btn-xs bg-red-500 text-white"
-                    >
-                      Confrim
-                    </button>
+                    {el?.status === "confrimed" ? (
+                      <button className="bg-green-500 btn btn-xs text-white">
+                        Confrimed
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleConfrim(el._id)}
+                        className="btn btn-ghost btn-xs bg-red-500 text-white"
+                      >
+                        Confrim
+                      </button>
+                    )}
                   </th>
                 </tr>
               );
