@@ -7,11 +7,13 @@ import { PrivateRoute } from "./Pages/PrivateRoute";
 import { Blog } from "./Pages/Blog";
 import { Cheakout } from "./Pages/Cheakout";
 import { MyBookings } from "./Pages/MyBookings";
+import { ErrorPage } from "./Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
