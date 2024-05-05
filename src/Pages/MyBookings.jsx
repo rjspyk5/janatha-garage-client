@@ -1,18 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../assets/Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const MyBookings = () => {
+  const [data, setdata] = useState([]);
   const { user } = useContext(AuthContext);
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ["bookings"],
-    queryFn: async () => {
-      const result = await axios.get(url);
-      return result.data;
-    },
-  });
+  useEffect(() => {
+    axios.get(url).then((res) => setdata(res.data));
+  }, [user?.email]);
 
   const handleDelete = (id) => {
     const proceed = confirm("Are you sure?");
@@ -20,7 +17,8 @@ export const MyBookings = () => {
       axios
         .delete(`http://localhost:5000/book/${id}`)
         .then((res) => {
-          console.log(res);
+          const update = data.filter((el) => el._id !== id);
+          setdata(update);
         })
         .catch((err) => console.log(err));
     }
