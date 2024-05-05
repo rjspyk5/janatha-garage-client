@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../assets/Provider/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+
 import axios from "axios";
 
 export const MyBookings = () => {
@@ -90,7 +90,10 @@ export const MyBookings = () => {
                   <td>{el.date}</td>
                   <th>
                     {el?.status === "confrimed" ? (
-                      <button className="bg-green-500 btn btn-xs text-white">
+                      <button
+                        disabled
+                        className="bg-green-500 btn btn-xs text-white"
+                      >
                         Confrimed
                       </button>
                     ) : (

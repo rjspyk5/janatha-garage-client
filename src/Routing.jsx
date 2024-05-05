@@ -8,6 +8,7 @@ import { Blog } from "./Pages/Blog";
 import { Cheakout } from "./Pages/Cheakout";
 import { MyBookings } from "./Pages/MyBookings";
 import { ErrorPage } from "./Pages/ErrorPage";
+import { ServiceSection } from "./Components/ServiceSection";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             <MyBookings />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/services",
+        element: <ServiceSection />,
       },
     ],
   },
