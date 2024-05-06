@@ -8,7 +8,7 @@ export const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
   useEffect(() => {
-    axios.get(url).then((res) => setdata(res.data));
+    axios.get(url, { withCredentials: true }).then((res) => setdata(res.data));
   }, [user?.email]);
 
   const handleDelete = (id) => {

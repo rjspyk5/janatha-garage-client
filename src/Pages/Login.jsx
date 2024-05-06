@@ -17,10 +17,17 @@ export const Login = () => {
     logIn(email, password)
       .then((res) => {
         axios
-          .post(`http://localhost:5000/jwt`, { email })
-          .then((res) => console.log(res.data))
+          .post(
+            `http://localhost:5000/jwt`,
+            { email },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            if (res.data.success) {
+              navigate(state ? state : "/");
+            }
+          })
           .catch((err) => console.log(err));
-        // navigate(state ? state : "/");
       })
       .catch((err) => console.log(err));
   };
