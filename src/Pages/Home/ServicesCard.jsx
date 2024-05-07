@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 export const ServicesCard = ({ data }) => {
   return (
     <div>
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+      <div className="card card-compact  bg-base-100 shadow-xl">
         <figure>
           <img src={data.img} alt="Services" />
         </figure>
