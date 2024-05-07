@@ -12,7 +12,7 @@ var cookieParser = require("cookie-parser");
 
 
 //midleware setup
-app.user(cookieParser());
+app.use(cookieParser());
 //update cors setting
 app.use(
   cors({
@@ -23,20 +23,7 @@ app.use(
 
 
 
-//cusom middleware make
-const verifyToken = async (req, res, next) => {
-  const token = req.cookies?.token;
-  if (!token) {
-    return res.status(401).send({ message: "not authorized" });
-  }
-  jwt.verify(token, process.env.access_token, (err, decoded) => {
-    if (err) {
-      return res.status(401).send({ message: "unauthorized" });
-    }
-    req.user = decoded;
-    next();
-  });
-};
+
 
 //eikhan e eka secret random number generate kora lagbe eitar jnnno valo system hocce cmd teh 
 -node likhbo
@@ -64,6 +51,23 @@ tarpor oi random number tah ke niye .env er vhitor dukabo access_token varibale 
       const user = req.body;
       res.clearCookie("token", { maxAge: 0 }).send({ success: true });
     });
+
+
+//custom middleware make
+
+const verifyToken = async (req, res, next) => {
+  const token = req.cookies?.token;
+  if (!token) {
+    return res.status(401).send({ message: "not authorized" });
+  }
+  jwt.verify(token, process.env.access_token, (err, decoded) => {
+    if (err) {
+      return res.status(401).send({ message: "unauthorized" });
+    }
+    req.user = decoded;
+    next();
+  });
+};
 
 //Eibar proti tah api teh jeikhan e jeikhan a amra oi user er data chara onno data dibo na orthath oi user er datay sudhu oi user ke deaar jnno api sequre korbo oikhan api setup korar somoy second parameter hisabe verifyToken naam e amr banano middle ware diye dibo and oitar vhitor e codntion check korte parbo je jar email shey tar token niye e access er chesta korse kina
 example:

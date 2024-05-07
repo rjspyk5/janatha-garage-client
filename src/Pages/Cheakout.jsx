@@ -25,7 +25,7 @@ export const Cheakout = () => {
     };
 
     axios
-      .post("http://localhost:5000/bookings", order)
+      .post("http://localhost:5000/bookings", order, { withCredentials: true })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };

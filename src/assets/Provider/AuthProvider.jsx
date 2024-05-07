@@ -4,8 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "./../../firebase.config";
 import axios from "axios";
 
@@ -22,20 +21,18 @@ export const AuthProvider = ({ children }) => {
       setloading(false);
       if (currentUser) {
         axios
-          .post(`http://localhost:5000/jwt`, loggedUser, {
+          .post("http://localhost:5000/jwt", loggedUser, {
             withCredentials: true,
           })
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((err) => console.log(err));
+          .then((res) => console.log(res.data))
+          .catch((er) => console.log(er));
       } else {
         axios
           .post("http://localhost:5000/logout", loggedUser, {
             withCredentials: true,
           })
-          .then((res) => console.log(res?.data))
-          .catch((er) => console.log(er));
+          .then((res) => console.log(res.data))
+          .then((er) => console.log(er));
       }
     });
 
