@@ -1,12 +1,12 @@
 import loginimg from "../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../assets/Provider/AuthProvider";
-import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import { useAuth } from "../Hooks/useAuth";
 export const Login = () => {
-  const { logIn } = useContext(AuthContext);
+  const { logIn } = useAuth();
+
   const { state } = useLocation();
   const navigate = useNavigate();
   const handleLogin = (e) => {

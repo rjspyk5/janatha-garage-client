@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../assets/Provider/AuthProvider";
 import axios from "axios";
+import { useAxiosSequre } from "../Hooks/useAxiosSequre";
 
 export const Cheakout = () => {
   const data = useLoaderData();
+  const axiosSequre = useAxiosSequre();
 
   const { user } = useContext(AuthContext);
   const handleSubmit = (e) => {
@@ -24,8 +26,8 @@ export const Cheakout = () => {
       price,
     };
 
-    axios
-      .post("http://localhost:5000/bookings", order, { withCredentials: true })
+    axiosSequre
+      .post("/bookings", order)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
