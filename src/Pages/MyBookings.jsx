@@ -1,21 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../assets/Provider/AuthProvider";
 
-import axios from "axios";
+import { useAxiosSequre } from "../Hooks/useAxiosSequre";
 
 export const MyBookings = () => {
+  const axiosSecure = useAxiosSequre();
   const [data, setdata] = useState([]);
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `/bookings?email=${user?.email}`;
   useEffect(() => {
-    axios.get(url, { withCredentials: true }).then((res) => setdata(res.data));
+    axiosSecure.get(url).then((res) => setdata(res.data));
   }, [user?.email]);
 
   const handleDelete = (id) => {
     const proceed = confirm("Are you sure?");
     if (proceed) {
-      axios
-        .delete(`http://localhost:5000/book/${id}`)
+      axiosSecure
+        .delete(`/book/${id}`)
         .then((res) => {
           const update = data.filter((el) => el._id !== id);
           setdata(update);
@@ -25,8 +26,8 @@ export const MyBookings = () => {
   };
 
   const handleConfrim = (id) => {
-    axios
-      .patch(`http://localhost:5000/book/${id}`, { status: "confrimed" })
+    axiosSecure
+      .patch(`/book/${id}`, { status: "confrimed" })
       .then(() => {
         alert("status updated");
         const statusUpdatedId = data.find((el) => el._id == id);

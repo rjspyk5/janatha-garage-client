@@ -2,13 +2,23 @@ import axios from "axios";
 import { useAuth } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
+//axios er base url and withcrediatntilas true kore dilam sob axios req er khetre
+
 const axiosSecure = axios.create({
   baseURL: "http://localhost:5000",
   withCredentials: true,
 });
+
+
+//axios er useAxiosSequre naam e ekta custom hook toiri korlam
+
 export const useAxiosSequre = () => {
+//conditonaly response ok nah thakle logout ba navigate hobe tai useNavigate and amr banano r ekta custom hook useAuth theke logout function niye dilam
   const { logout } = useAuth();
   const navigate = useNavigate();
+
+//axiosSecure naam e jeita banisis oita teh interceptors use korlam\
+
   axiosSecure.interceptors.response.use(
     (res) => {
       return res;
