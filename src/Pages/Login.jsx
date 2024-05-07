@@ -16,18 +16,7 @@ export const Login = () => {
     const password = form.password.value;
     logIn(email, password)
       .then((res) => {
-        axios
-          .post(
-            `http://localhost:5000/jwt`,
-            { email },
-            { withCredentials: true }
-          )
-          .then((res) => {
-            if (res.data.success) {
-              navigate(state ? state : "/");
-            }
-          })
-          .catch((err) => console.log(err));
+        console.log(res);
       })
       .catch((err) => console.log(err));
   };
