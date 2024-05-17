@@ -44,13 +44,19 @@ export const MyBookings = () => {
     axiosSecure
       .patch(`/book/${id}`, { status: "confrimed" })
       .then(() => {
-        alert("status updated");
         const statusUpdatedId = data.find((el) => el._id == id);
         statusUpdatedId.status = "confrimed";
         const allProductWithoutUpdatedStatus = data.filter(
           (el) => el._id !== id
         );
         setdata([statusUpdatedId, ...allProductWithoutUpdatedStatus]);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => console.log(err));
   };
