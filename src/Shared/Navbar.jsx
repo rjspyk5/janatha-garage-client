@@ -15,7 +15,9 @@ export const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+            isActive
+              ? " bg-[#124442] focus:bg-[#124442] text-white focus:text-white"
+              : " "
           }
         >
           Home
@@ -25,7 +27,9 @@ export const Navbar = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+            isActive
+              ? " bg-[#124442] focus:bg-[#124442] text-white focus:text-white"
+              : " "
           }
         >
           About
@@ -35,7 +39,9 @@ export const Navbar = () => {
         <NavLink
           to="/services"
           className={({ isActive }) =>
-            isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+            isActive
+              ? " bg-[#124442] focus:bg-[#124442] text-white focus:text-white"
+              : " "
           }
         >
           Services
@@ -45,7 +51,9 @@ export const Navbar = () => {
         <NavLink
           to="/blog"
           className={({ isActive }) =>
-            isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+            isActive
+              ? " bg-[#124442] focus:bg-[#124442] text-white focus:text-white"
+              : " "
           }
         >
           Blog
@@ -56,7 +64,9 @@ export const Navbar = () => {
           <NavLink
             to="/mybookings"
             className={({ isActive }) =>
-              isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+              isActive
+                ? " bg-[#124442] focus:bg-[#124442] text-white focus:text-white"
+                : " "
             }
           >
             Mybookings
@@ -67,7 +77,9 @@ export const Navbar = () => {
         <NavLink
           to="/contact"
           className={({ isActive }) =>
-            isActive ? " bg-[#b32424] focus:bg-[#b32424]" : " "
+            isActive
+              ? " bg-[#124442] focus:bg-[#124442] text-white focus:text-white"
+              : " "
           }
         >
           Contact
