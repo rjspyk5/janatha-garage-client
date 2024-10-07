@@ -51,9 +51,8 @@ export const MyBookings = () => {
         );
         setdata([statusUpdatedId, ...allProductWithoutUpdatedStatus]);
         Swal.fire({
-          position: "center",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Your work has been saved.",
           showConfirmButton: false,
           timer: 1500,
         });
